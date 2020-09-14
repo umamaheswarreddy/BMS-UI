@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" routerLink="/home">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/mutualFund">View-MutualFunds</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        
+            <a class="nav-link" routerLink="/home/logout">LOGOUT</a>
+         
+      </span>
+    </div>
+  </nav>
+
+<div class="text-center"><h3>Invest In MutualFund</h3></div>
+<div class="container p-5 bg-light">
+    <div class="alert alert-warning text-center" *ngIf="success">{{errMsg}}</div>  
+    <div class="alert alert-warning text-center" *ngIf="check">{{midError}}</div>  
+
+    <form name="form" (ngSubmit)="save()" #f="ngForm">
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vName">accountNumber</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="(^[0-9]{10}$)" id="vName" required #vn="ngModel" class="form-control" name="VendorName" 
+                [(ngModel)]="item.accountNumber" placeholder="Enter bankAccount">
+                <div *ngIf="vn.touched">
+                    <div *ngIf="vn.errors && (vn.invalid)">
+                      <small class="text-danger" *ngIf="vn.errors.required">bankAccount is required</small>
+                      <small class="text-danger" *ngIf="vn.errors.pattern">bankAccount should contain 10 digits</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vCity">amountToInvest</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="(^0[1-9]|[1-9]{1}[0-9]{1}$)" id="vCity" required #city="ngModel" class="form-control" name="VendorCity"
+                [(ngModel)]="item.amountToInvest" placeholder="amountToInvest">
+                <div *ngIf="city.touched">
+                    <div *ngIf="city.errors && (city.invalid)">
+                      <small class="text-danger" *ngIf="city.errors.required">amountToInvest is required</small>
+                      <small class="text-danger" *ngIf="city.errors.pattern">2 digit number only </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vMobile"> mutualFundId</label>
+            </div>
+            <div class="col-7">
+                <input type="number" max="3" min="1"  id="vMobile" required  #mobile="ngModel" class="form-control" name="VendorMobile"
+                [(ngModel)]="item.mutualFundId" placeholder="Enter mutualFundId">
+                <div *ngIf="mobile.touched">
+                    <div *ngIf="mobile.errors && (mobile.invalid)">
+                      <small class="text-danger" *ngIf="mobile.errors.required">mutualFundId is required</small>
+                      <small class="text-danger" *ngIf="mobile.errors.min">mutualFundId should be between 1 to 3</small>
+                      <small class="text-danger" *ngIf="mobile.errors.max">mutualFundId should be between 1 to 3</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button [disabled]="f.invalid" type="submit" name="submit" class="form-control"
+             class="btn btn-primary btn-md">Submit</button>
+        </div>
+        <div class="row mt-3 ml-4 form-group ">
+            <button type="button" class="btn btn-secondary" routerLink="/home2"><- Back</button>
+        </div>
+    </form>
+    
+</div>

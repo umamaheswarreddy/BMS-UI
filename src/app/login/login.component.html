@@ -1,0 +1,30 @@
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+ 
+ <div class="wrapper fadeInDown">
+   <div id="formContent">
+    
+     <div class="fadeIn first">
+        <h2 id="litheader">BMS</h2>
+        <div class="alert alert-warning"  *ngIf="invalidLogin">{{errorMessage}}</div>
+     </div>
+ 
+    
+     <form>
+        <input type="text" name="username" [(ngModel)]="username" id="username" class="fadeIn third" placeholder="username">
+        <input type="password" id="password" [(ngModel)]="password"  name="login" placeholder="password">
+       <input type="submit" class="fadeIn fourth" value="Log In" (click)="doLogin()">
+     </form>
+ 
+    
+     <div id="formFooter">
+       <a class="underlineHover" href="add">Register here</a>
+     </div>
+ 
+   </div>
+ </div> 
+
+
+

@@ -1,0 +1,141 @@
+<div class="text-center"><h1>Enter Your Details to Register</h1></div>
+<div class="container p-5 bg-light">
+ 
+    <div class="alert alert-warning text-center" *ngIf="success">{{errMsg}}</div> 
+
+    <form name="form" (ngSubmit)="save()" #f="ngForm">
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vName"> firstName</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="[a-zA-Z]{2}[A-Za-z\s]*" id="vName" required #vn="ngModel"
+                    class="form-control" name="firstName" [(ngModel)]="item.firstName" placeholder="Enter  Name">
+                <div *ngIf="vn.touched">
+                    <div *ngIf="vn.errors && (vn.invalid)">
+                        <small class="text-danger" *ngIf="vn.errors.required">firstName is required</small>
+                        <small class="text-danger" *ngIf="vn.errors.pattern">Only alphabets allowed with minimum 2
+                            chars</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vName">Last Name</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="[a-zA-Z]{2}[A-Za-z\s]*" id="lName" required #ln="ngModel"
+                    class="form-control" name="lastName" [(ngModel)]="item.lastName" placeholder="lastName">
+                <div *ngIf="ln.touched">
+                    <div *ngIf="ln.errors && (ln.invalid)">
+                        <small class="text-danger" *ngIf="ln.errors.required">lastName is required</small>
+                        <small class="text-danger" *ngIf="ln.errors.pattern">Only alphabets allowed with minimum 2
+                            chars</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vCity"> pasword</label>
+            </div>
+            <div class="col-7">
+                <input type="password" pattern="[a-zA-Z0-9]{4}[A-Za-z0-9\\s]*" id="pasword" required #pasword="ngModel"
+                    class="form-control" name="VendorCity" [(ngModel)]="item.password" placeholder="pasword">
+                <div *ngIf="pasword.touched">
+                    <div *ngIf="pasword.errors && (pasword.invalid)">
+                        <small class="text-danger" *ngIf="pasword.errors.required">pasword  is required</small>
+                        <small class="text-danger" *ngIf="pasword.errors.pattern">Only alphabets allowed with minimum 2
+                            chars</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vCity"> conformPassword</label>
+            </div>
+            <div class="col-7">
+                <input type="password" pattern="[a-zA-Z0-9]{4}[A-Za-z0-9\\s]*" id="conformPassword" required #cp="ngModel"
+                    class="form-control" name="City" [(ngModel)]="item.conformPassword" placeholder="conformPassword">
+                <div *ngIf="cp.touched">
+                    <div *ngIf="cp.errors && (cp.invalid)">
+                        <small class="text-danger" *ngIf="cp.errors.required">conformPassword  is required</small>
+                        <small class="text-danger" *ngIf="cp.errors.pattern">Only alphabets allowed with minimum 2
+                            chars</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vEmail"> Email Id</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$" id="vEmail"
+                    required #email="ngModel" class="form-control" name="rEmailId" [(ngModel)]="item.email"
+                    placeholder="Enter  EmailId">
+                <div *ngIf="email.touched">
+                    <div *ngIf="email.errors && (email.invalid)">
+                        <small class="text-danger" *ngIf="email.errors.required">Email Id is required</small>
+                        <small class="text-danger" *ngIf="email.errors.pattern">Invalid email Id</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vMobile"> Mobile</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="[1-9]{1}[0-9]{9}" id="vMobile" required maxlength="10" #mobile="ngModel" class="form-control" name="Mobile"
+                [(ngModel)]="item.contactNumber" placeholder="Enter contactNumber">
+                <div *ngIf="mobile.touched">
+                    <div *ngIf="mobile.errors && (mobile.invalid)">
+                      <small class="text-danger" *ngIf="mobile.errors.required">Mobile number is required</small>
+                      <small class="text-danger" *ngIf="mobile.errors.pattern">Must not start with 0 and have exactly 10 digits</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vpan"> Pan</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="(^[A-Za-z]{5}[0-9]{4}[A-Za-z]{1}$)" id="pan" required  #pan="ngModel" class="form-control" name="VendorMobile"
+                [(ngModel)]="item.pan" placeholder="Enter Pan number">
+                <div *ngIf="pan.touched">
+                    <div *ngIf="pan.errors && (pan.invalid)">
+                      <small class="text-danger" *ngIf="pan.errors.required">pan number is required</small>
+                      <small class="text-danger" *ngIf="pan.errors.pattern">pls enter valid password</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vpan"> DOB</label>
+            </div>
+            <div class="col-7">
+                <input type="text"  id="DOB"  pattern= "^((0|1)\d{1})-((0|1|2)\d{1})-((19|20)\d{2}$)" required  #birthday="ngModel" class="form-control" name="dob"
+                [(ngModel)]="item.birthday" placeholder="mm-dd-yyyy">
+                <div *ngIf="birthday.touched">
+                    <div *ngIf="birthday.errors && (birthday.invalid)">
+                      <small class="text-danger" *ngIf="birthday.errors.required">dob number is required</small>
+                      <small class="text-danger" *ngIf="birthday.errors.pattern">it should be in mm-dd-yyyy format</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+       
+      
+
+        <div class="text-center">
+            <button [disabled]="f.invalid" type="submit" name="submit" class="form-control"
+                class="btn btn-primary btn-md">Submit</button>
+        </div>
+    </form>
+
+</div>

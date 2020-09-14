@@ -1,0 +1,79 @@
+
+
+<!-- <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script> -->
+
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" routerLink="/home">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/mutualFund">View-MutualFunds</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        
+            <a class="nav-link" routerLink="/home/logout">LOGOUT</a>
+         
+      </span>
+    </div>
+  </nav>
+
+<div class="container">
+    <div class="column">
+        <div id="custom-search-input">
+            <div class="input-group col-md-12" style="text-align: center">
+                <input type="text" class="search-query form-control" placeholder="PAN"
+                    name="email" [(ngModel)]="pan" />
+                 <input type="text" class="search-query form-control" placeholder=" MutualFundId"
+                    name="email" [(ngModel)]="mutualFundId" />
+                    <button type="button" (click)="findUserByPanAndMID()"  class="btn btn-primary">search</button>
+                 <!-- <span class="input-group-btn">
+                    <button class="btn btn-danger" type="button" (click)="findUserByPanAndMID()">
+                        <span class=" glyphicon glyphicon-search"></span>
+                    </button>
+                </span> -->
+            </div>
+        </div>
+    </div>
+</div>
+
+<section class="container-fluid bg-light p-5">
+    <div class="alert alert-warning text-center"  *ngIf="invalidLogin">{{errMsg}}</div>  
+<table class="table table-bordered table-dark">
+    <thead class="thead-dark">
+        
+        <tr>
+               <th>mutualFundId</th>
+                <th>accountNumber</th>
+                <th>amount</th>
+                <th>timeStamp</th>  
+                <th>mutualFundName</th>  
+        </tr>      
+    </thead>
+    <tbody>
+       
+        <tr *ngFor="let transaction of transactions">
+            <td>{{transaction.mutualFundId}}</td>
+            <td>{{transaction.accountNumber}}</td>
+            <td>{{transaction.amountToInvest}}</td>
+            <td>{{transaction.timeStamp}}</td>
+            <td>{{transaction.mutulFund.mutualFundName}}</td>
+          </tr>
+        
+    </tbody>
+</table>
+</section>
+<div class="text-center">
+    <button type="button" class="btn btn-outline-dark" routerLink="/home2">Back</button>
+</div>

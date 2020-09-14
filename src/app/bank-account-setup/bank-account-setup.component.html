@@ -1,0 +1,100 @@
+<nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+    <a class="navbar-brand" routerLink="/home">Home</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" routerLink="/mutualFund">View-MutualFunds</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#"></a>
+        </li>
+      </ul>
+      <span class="navbar-text">
+        
+            <a class="nav-link" routerLink="/home/logout">LOGOUT</a>
+         
+      </span>
+    </div>
+  </nav>
+<div class="text-center"><h3>Create Bank Account</h3></div>
+<div class="container p-5 bg-light">
+    
+    <div class="alert alert-warning" *ngIf="success">{{errMsg}}</div>  
+
+    <form name="form" (ngSubmit)="save()" #f="ngForm">
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vName">bankAccount</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="(^[0-9]{10}$)" id="vName" required #vn="ngModel" class="form-control" name="VendorName" 
+                [(ngModel)]="item.bankAccount" placeholder="Enter bankAccount">
+                <div *ngIf="vn.touched">
+                    <div *ngIf="vn.errors && (vn.invalid)">
+                      <small class="text-danger" *ngIf="vn.errors.required">bankAccount is required</small>
+                      <small class="text-danger" *ngIf="vn.errors.pattern">bankAccount should contain 10 digits</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vCity">ifscCode</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="^[A-Z]{4}0[A-Z0-9]{6}$" id="vCity" required #city="ngModel" class="form-control" name="VendorCity"
+                [(ngModel)]="item.ifscCode" placeholder="Enter ifscCode">
+                <div *ngIf="city.touched">
+                    <div *ngIf="city.errors && (city.invalid)">
+                      <small class="text-danger" *ngIf="city.errors.required">ifscCode is required</small>
+                      <small class="text-danger" *ngIf="city.errors.pattern">ifscCode is an 11-digit alpha-numeric code used to uniquely identify bank </small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vMobile"> bankName</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="(^[a-zA-Z]+$)" id="vMobile" required  #mobile="ngModel" class="form-control" name="VendorMobile"
+                [(ngModel)]="item.bankName" placeholder="Enter bankName">
+                <div *ngIf="mobile.touched">
+                    <div *ngIf="mobile.errors && (mobile.invalid)">
+                      <small class="text-danger" *ngIf="mobile.errors.required">bankName is required</small>
+                      <small class="text-danger" *ngIf="mobile.errors.pattern">bankName name should be atleast two charachters</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row form-group">
+            <div class="col-2">
+                <label for="vEmail">micrCode</label>
+            </div>
+            <div class="col-7">
+                <input type="text" pattern="(^[0-9]{9}$)" id="vEmail" required #email="ngModel" class="form-control" name="VendorEmailId"
+                [(ngModel)]="item.micrCode" placeholder="Enter micrCode">
+                <div *ngIf="email.touched">
+                    <div *ngIf="email.errors && (email.invalid)">
+                      <small class="text-danger" *ngIf="email.errors.required">micrCode is required</small>
+                      <small class="text-danger" *ngIf="email.errors.pattern">MICR code is a 9-digit code that uniquely identifies the bank and branch</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="text-center">
+            <button [disabled]="f.invalid" type="submit" name="submit" class="form-control"
+             class="btn btn-primary btn-md">Submit</button>
+        </div>
+        <div class="row mt-3 ml-4 form-group">
+            <button type="button" class="btn btn-secondary" routerLink="/home1"><- Back</button>
+          </div>
+    </form>
+    <!-- //row mt-3 ml-4 form-group -->
+</div>
